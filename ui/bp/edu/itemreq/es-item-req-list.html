@@ -92,17 +92,21 @@
 				<sc-button text="신규" on-click="onAddReq" auth-s></sc-button> 
 				<sc-button text="삭제" on-click="onDeleteList" auth-s></sc-button>
 			</cc-grid-toolbar>
-			<sc-grid-columns>
-				<sc-combobox-column data-field="item_reg_req_sts_ccd" header-text="요청 상태" width="100"
-									display-field="label" value-field="data"
-									items="{{codes.progStsList}}"></sc-combobox-column>
 			
 			
 			
-				<sc-group-column  hide-child-headers="true" 	header-text="협력사 명" width="300">
-					<sc-data-column data-field="item_reg_req_no" width="250" style-name="link"></sc-data-column>
+			<sc-grid-columns>				
+			
+				<sc-group-column  hide-child-headers="true" 	header-text="요청 상태" width="150">
+
+				<sc-combobox-column data-field="item_reg_req_sts_ccd" width="100" display-field="label" value-field="data" items="{{codes.progStsList}}"></sc-combobox-column>
 					<sc-image-column data-field="btn_select" width="50" text-align="center" visible="[[singleSelect]]" singular-source="ui/assets/img/grid/icon_link.png"></sc-image-column>
+
 				</sc-group-column>
+			
+			
+			
+				<sc-data-column data-field="item_reg_req_no" header-text="요청 번호" width="150" style-name="link"></sc-data-column>
 				
 
 				<sc-combobox-column data-field="req_typ_ccd" header-text="요청 유형" width="80"
