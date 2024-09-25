@@ -1,3 +1,7 @@
+<sc-link rel="import" href="ep-reason-detail.html"></sc-link>
+
+
+
 <dom-module id="es-item-req-list">
 
     <style>
@@ -100,7 +104,7 @@
 				<sc-group-column  hide-child-headers="true" 	header-text="요청 상태" width="150">
 
 				<sc-combobox-column data-field="item_reg_req_sts_ccd" width="100" display-field="label" value-field="data" items="{{codes.progStsList}}"></sc-combobox-column>
-				<sc-image-column data-field="btn_select" width="50"  text-align="center" image-change-function="onImageChange"></sc-image-column>
+				<sc-image-column data-field="click_link" width="50"  text-align="center" image-change-function="onImageChange"></sc-image-column>
 
 				</sc-group-column>
 			
@@ -160,7 +164,6 @@
 		},
 		
 		initialized: function(){
-			console.log('start ::.....::')
         	this.onSearch();
         },
 		
@@ -198,6 +201,14 @@
 				} else {
 					me.fire("show-detail", data);
 				}
+			} else if (item.dataField === "click_link") {
+				var aprvPopup = UT.popup('ep-reason-detail', me, 600, 300, {
+					'close': function(popup, e) {
+						popup.close();
+					}
+				},{titleText : "reason datail"});
+				aprvPopup.show();
+				aprvPopup.getWindowContent().load({"item_reg_req_ret_rsn": data.item_reg_req_ret_rsn});
 			}
 		},
 		
@@ -244,6 +255,7 @@
 				UT.alert("STD.E9999");// 오류가 발생하였습니다.\n관리자에게 문의하세요
 			}
 		}, 
+		
 		onImageChange:function(data, item){
 			var me = this;
 			if(data["item_reg_req_sts_ccd"] === "RET"){
