@@ -116,6 +116,8 @@
 				<sc-combobox-column data-field="req_typ_ccd" header-text="요청 유형" width="80"
 									display-field="label" value-field="data"
 									items="{{codes.reqTypList}}"></sc-combobox-column>
+									
+									
 				<sc-data-column data-field="item_cd" header-text="품목 코드" width="100"></sc-data-column>
 				<sc-data-column data-field="disp_item_nm" header-text="품목 명" width="200" text-align="left"></sc-data-column>
 				<sc-data-column data-field="item_spec" header-text="품목 규격" width="300" text-align="left"></sc-data-column>
@@ -201,7 +203,7 @@
 				} else {
 					me.fire("show-detail", data);
 				}
-			} else if (item.dataField === "click_link") {
+			} else if (item.dataField === "click_link" && data.item_reg_req_sts_ccd === "RET") {
 				var aprvPopup = UT.popup('ep-reason-detail', me, 600, 300, {
 					'close': function(popup, e) {
 						popup.close();

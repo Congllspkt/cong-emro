@@ -520,7 +520,7 @@
 		SELECT
 		    COUNT(1) AS CNT
 			, MAX(ITEM_CD) AS ITEM_CD
-		FROM ITEM
+		FROM ITEM_REG_REQ_EDU
 		WHERE ITEM_NM = #{p.item_nm}
 		<if test="p.item_cd != null and p.item_cd != &quot;&quot;">
 			AND ITEM_CD != #{p.item_cd}
