@@ -493,8 +493,8 @@
             WHERE DTL.TEN_ID   = #{g.tenant}
               AND DTL.CCD   = 'C007'
               AND DTL.USE_YN   = 'Y'
-		<if test='p.dtl_cd != null and p.dtl_cd != ""'>
-			<bind name="dtlCdPattern" value="'%' + p.dtl_cd + '%'"/>
+	<if test='p.dtlcd != null and p.dtlcd != ""'>
+			<bind name="dtlCdPattern" value="'%' + p.dtlcd + '%'"/>
               AND UPPER(DTL.DTLCD) LIKE UPPER(#{dtlCdPattern})
 		</if>
 		<if test='p.dtlcd_nm != null and p.dtlcd_nm != ""'>
